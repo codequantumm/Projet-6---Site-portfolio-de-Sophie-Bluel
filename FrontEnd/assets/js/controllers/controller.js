@@ -6,6 +6,7 @@ getAllWorks()
         console.log("Données reçues de l'API : ", data);
         genererBouttonsCategories(data); 
         filtrerParCategories("all", data); 
+        filtrerParCategoriesCliquee(data); 
         gallery.innerHTML = '';
 
         data.forEach(work => {

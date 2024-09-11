@@ -22,12 +22,15 @@ categories.forEach(category => {
 }
 
 function filtrerParCategories(category, data) {
+    const gallery = document.querySelector(".gallery"); 
     gallery.innerHTML = ''; 
     console.log("Filtres par cat"); 
 
-    const travauxFiltres = category === "all"
-    ? data
-    : data.filtres(work => work.category.name === category); 
+    let travauxFiltres = data; 
+    if (category !== "all") {
+        travauxFiltres = data.filter(work => work.category.name === category); 
+    }
+ 
 
     console.log("travaux filtrés, tous par defaut"); 
 
@@ -38,7 +41,20 @@ function filtrerParCategories(category, data) {
             <figcaption>${work.title}</figcaption>
         `; 
         gallery.appendChild(figure); 
-        console.log("Travail affcihé pour chaque cat"); 
+        console.log("Travail affcihé selon cat"); 
 
-    })
+    }); 
+    
+}
+
+function filtrerParCategoriesCliquee(data) {
+    const filtresBouttons = document.querySelectorAll("#filtres button"); 
+    filtresBouttons.forEach(button => {
+        button.addEventListener("click", (event) => {
+            const category = event.target.getAttribute("data-category"); 
+            console.log("Bouton cliqué selon cat"); 
+            filtrerParCategories(category, data); 
+        }); 
+       
+    }); 
 }
