@@ -4,7 +4,7 @@ const gallery = document.getElementById('gallery');
 getAllWorks()
     .then(data => {
         console.log("Données reçues de l'API : ", data);
-
+        genererBouttonsCategories(data); 
         gallery.innerHTML = '';
 
         data.forEach(work => {
