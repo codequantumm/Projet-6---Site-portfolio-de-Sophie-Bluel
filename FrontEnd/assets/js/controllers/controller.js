@@ -5,6 +5,7 @@ getAllWorks()
     .then(data => {
         console.log("Données reçues de l'API : ", data);
         genererBouttonsCategories(data); 
+        filtrerParCategories("all", data); 
         gallery.innerHTML = '';
 
         data.forEach(work => {
@@ -16,7 +17,8 @@ getAllWorks()
             gallery.appendChild(figure);
             console.log("Élément ajouté à la galerie : ", figure);
         })
+        /*
 .catch(error => {
     console.error("Erreur", error)
-})
+})*/
     })

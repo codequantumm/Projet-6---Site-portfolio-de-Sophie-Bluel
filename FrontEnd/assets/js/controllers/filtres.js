@@ -20,3 +20,12 @@ categories.forEach(category => {
     console.log("Bouttons pour chaque cat ajouté")
 })
 }
+
+function filtrerParCategories(category, data) {
+    gallery.innerHTML = ''; 
+    console.log("Filtres par cat"); 
+
+    const travauxFiltres = category === "all"
+    ? data
+    : data.filtres(work => work.category.name === category); 
+}
