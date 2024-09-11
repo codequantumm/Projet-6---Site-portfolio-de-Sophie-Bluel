@@ -28,4 +28,17 @@ function filtrerParCategories(category, data) {
     const travauxFiltres = category === "all"
     ? data
     : data.filtres(work => work.category.name === category); 
+
+    console.log("travaux filtrés, tous par defaut"); 
+
+    travauxFiltres.forEach(work => {
+        const figure = document.createElement("figure")
+        figure.innerHTML = `
+        <img src="${work.imageUrl}" alt="${work.title}">
+            <figcaption>${work.title}</figcaption>
+        `; 
+        gallery.appendChild(figure); 
+        console.log("Travail affcihé pour chaque cat"); 
+
+    })
 }
