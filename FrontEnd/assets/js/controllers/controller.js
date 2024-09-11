@@ -18,5 +18,5 @@ getAllWorks()
         })
 .catch(error => {
     console.error("Erreur", error)
-};)
+})
     })
