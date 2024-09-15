@@ -61,18 +61,3 @@ function filtrerParCategoriesCliquee(data) {
         
     }); 
 }
-/*
-let choix =true
-
-function change() {
-    if (choix === true) {
-        button.style.backgroundColor = "#1D6154"; 
-        choix = false
-    }
-    else {
-        button.style.backgroundColor = "white"; 
-        choix = true; 
-    }
-    console.log("ca change de couleur au click !"); 
-}
-    */
