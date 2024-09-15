@@ -52,9 +52,27 @@ function filtrerParCategoriesCliquee(data) {
     filtresBouttons.forEach(button => {
         button.addEventListener("click", (event) => {
             const category = event.target.getAttribute("data-category"); 
-            console.log("Bouton cliqué selon cat"); 
+            console.log("Bouton cliqué selon cat");
             filtrerParCategories(category, data); 
+
+            filtresBouttons.forEach(btn => btn.classList.remove("active")); 
+            button.classList.add("active"); 
         }); 
-       
+        
     }); 
 }
+/*
+let choix =true
+
+function change() {
+    if (choix === true) {
+        button.style.backgroundColor = "#1D6154"; 
+        choix = false
+    }
+    else {
+        button.style.backgroundColor = "white"; 
+        choix = true; 
+    }
+    console.log("ca change de couleur au click !"); 
+}
+    */
