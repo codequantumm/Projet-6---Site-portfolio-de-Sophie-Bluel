@@ -18,8 +18,5 @@ getAllWorks()
             gallery.appendChild(figure);
             console.log("Élément ajouté à la galerie : ", figure);
         })
-        /*
-.catch(error => {
-    console.error("Erreur", error)
-})*/
+ 
     })
