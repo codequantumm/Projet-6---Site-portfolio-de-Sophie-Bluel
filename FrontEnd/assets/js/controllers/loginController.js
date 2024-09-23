@@ -1,5 +1,5 @@
 
-import { login } from "../services/login.js"
+
 
 document.getElementById("login-form").addEventListener("submit", async function(event) {
     event.preventDefault(); 
@@ -13,8 +13,10 @@ document.getElementById("login-form").addEventListener("submit", async function(
     console.log("Réponse du serveur", reponse); 
 
     if (reponse.ok) {
-        window.location.href = "index.html"; 
+        console.log(reponse.body); 
+        sessionStorage.setItem("token", reponse.body.token);
+       // window.location.href = "index.html"; 
     } else {
         alert("Email ou mot de passe incorrect. Veuillez réessayer."); 
     }
-});  
+}); 
