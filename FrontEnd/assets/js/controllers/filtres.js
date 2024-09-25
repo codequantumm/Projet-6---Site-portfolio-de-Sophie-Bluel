@@ -1,6 +1,14 @@
+function masquerFiltres() {
+    const filtres = document.getElementById("filtres");
+    if (filtres) {
+        filtres.style.display = "none"; 
+        console.log("filtres masqués"); 
+    }
+}
+
 
 function genererBouttonsCategories(data) { 
-const filtres = document.getElementById("filtres"); 
+filtres = document.getElementById("filtres"); 
 let categories = new Set() // Eviter les doublons
 
 filtres.innerHTML = `<button data-category="all">Tous</button>`;
