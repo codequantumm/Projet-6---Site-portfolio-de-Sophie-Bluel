@@ -5,6 +5,7 @@ function mAjLogin(estConnecte) {
     if (loginButton) {
         if (estConnecte) {
             loginButton.textContent = "Logout";
+            
             loginButton.addEventListener('click', deconnexion); 
         } else {
             loginButton.textContent = "Login";
@@ -62,7 +63,11 @@ function init() {
     }
 
     const estConnecte = !!recupererToken(); 
-    mAjLogin(estConnecte); 
+    mAjLogin(estConnecte);
+
+    if(estConnecte) {
+        masquerFiltres(); 
+    }
 }
 
 document.addEventListener("DOMContentLoaded", init);
