@@ -247,7 +247,7 @@ footer nav ul {
 	left: 0;
 	width: 100%;
 	height: 100%;
-	background-color: rgba(0, 0, 0, 0.8);
+	background-color: rgba(0, 0, 0, 0.5);
 	z-index: 1000;
 
 }
@@ -259,13 +259,21 @@ footer nav ul {
 	padding: 20px;
 	background-color: #F2F2F2;
 	position: relative;
+	border-radius: 10px; 
 	
 
 }
 
 .js-modal-close {
 	position: absolute;
+	position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
 }
+
 
 a.js-modal {
 	font-size: 15px;
