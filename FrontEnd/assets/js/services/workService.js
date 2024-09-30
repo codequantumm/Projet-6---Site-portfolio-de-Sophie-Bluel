@@ -2,6 +2,7 @@ async function getAllWorks() {
     return await fetch("http://localhost:5678/api/works").then(response => response.json());
 };
 
+<<<<<<< HEAD
 async function addNewWorks(imageFile, title, category) {
     const formData = new FormData();
     formData.append('image', imageFile); // Assuming imageFile is a File object
@@ -27,3 +28,6 @@ function deleteWorks(idwork) {
     fetch("http://localhost:5678/api/works/" + idwork)
         .catch(error => console.error(error));
 }
+=======
+
+>>>>>>> 817cb287168c42f6947714a965045c9dfbaa6f55
