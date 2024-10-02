@@ -7,5 +7,7 @@ function recupererToken(){
 }
 
 function supprimerToken(){
-    sessionStorage.removeItem("token"); 
+    sessionStorage.removeItem("token");
+    console.log("Token récupéré :", token);
+    return token;  
 }
