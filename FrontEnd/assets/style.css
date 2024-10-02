@@ -186,7 +186,7 @@ li:hover {
 	width: 100%;
 
 }
-#contact, #login {
+#contact, #login, #ajouter-photo {
 	width: 50%;
     margin: auto;
 }
@@ -204,7 +204,7 @@ li:hover {
 	flex-direction: column;
 }
 
-#contact input, #login input {
+#contact input, #login input, #ajouter-photo {
 	height: 50px;
 	font-size: 1.2em;
 	border: none;
@@ -254,8 +254,8 @@ footer nav ul {
 
 .modal-wrapper {
 	overflow: auto;
-	width: 565px;
-	height: 615px;
+	width: 630px;
+	height: 688px;
 	padding: 50px;
 	background-color: #F2F2F2;
 	position: relative;
@@ -290,27 +290,27 @@ a.js-modal {
 	display: grid;
 	grid-template-columns: repeat(auto-fill);
 	gap: 10px;
-	padding: 10px;
 }
 
 .miniatures {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); 
     gap: 10px;
-    padding: 10px;
-}
-
-.miniature-item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: white;
-    border-radius: 5px;
-    overflow: hidden;
-    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+	padding: 10px;
 }
 
 .miniature {
     width: 100%;
-    object-fit: cover; 
+    object-fit: cover;
+	margin-bottom: 20px; 
+}
+
+#ajouter-photo {
+	display: flex;
+}
+
+hr {
+    margin: 40px auto;
+	border: 1px solid #B3B3B3; 
+	width: 420px
 }
