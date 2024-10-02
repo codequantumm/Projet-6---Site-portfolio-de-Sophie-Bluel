@@ -285,7 +285,10 @@ a.js-modal {
 .modal[aria-hidden="false"] {
     display: flex;
 }
-
+.miniature-item {
+    position: relative; 
+    display: inline-block;
+}
 .miniature {
 	display: grid;
 	grid-template-columns: repeat(auto-fill);
@@ -313,4 +316,20 @@ hr {
     margin: 40px auto;
 	border: 1px solid #B3B3B3; 
 	width: 420px
+}
+
+.trash-btn {
+	position: absolute;
+    top: 5px;
+    right: 5px;
+    color: white;
+    border: none;
+	background-color: rgba(0, 0, 0, 0.6);;
+    padding: 5px;
+	border-radius: 10%;
+    cursor: pointer;
+	transition: 0.3s;
+}
+.trash-btn:hover {
+    background-color: rgba(0, 0, 0, 0.9);
 }
