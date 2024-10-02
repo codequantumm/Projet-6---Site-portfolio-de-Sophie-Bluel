@@ -48,13 +48,28 @@ async function afficherWorksDansModale() {
 
     works.forEach(work => {
         const miniatureWrapper = document.createElement("div"); 
-        miniatureWrapper.classList.add("miniature-item"); 
+        miniatureWrapper.classList.add("miniature-item");
+
         const miniature = document.createElement("img"); 
         miniature.src = work.imageUrl; 
         miniature.alt = work.title; 
         miniature.classList.add("miniature"); 
 
-        miniatureWrapper.appendChild(miniature); 
+        const trashButton =document.createElement("button"); 
+        trashButton.classList.add("trash-btn"); 
+        trashButton.innerHTML = '<i class="fa-solid fa-trash"></i>'; 
+        trashButton.setAttribute('data-id', work.id); 
+
+        trashButton.addEventListener("click", async function () {
+            const confirmation = confirm("Voulez-vous vraiment supprimer ce projet ?"); 
+            if (confirmation) {
+                await deleteWorks(work.id); 
+                miniatureWrapper.remove(); 
+            }
+        }); 
+
+        miniatureWrapper.appendChild(miniature);
+        miniatureWrapper.appendChild(trashButton); 
 
         miniaturesContainer.appendChild(miniatureWrapper); 
     })
