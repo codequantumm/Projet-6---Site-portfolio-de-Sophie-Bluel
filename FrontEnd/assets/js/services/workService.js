@@ -23,7 +23,30 @@ async function addNewWorks(imageFile, title, category) {
 
 }
 
-function deleteWorks(idwork) {
+/*function deleteWorks(idwork) {
     fetch("http://localhost:5678/api/works/" + idwork)
         .catch(error => console.error(error));
+}*/
+
+async function deleteWorks(idwork) {
+    try {
+        const token = recupererToken();
+        const response = await fetch(`http://localhost:5678/api/works/${idwork}`, {
+            method: "DELETE",
+            headers: {
+                'Authorization': 'Bearer ' + token,
+                'Content-Type': 'application/json'
+            },
+        });
+
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Erreur lors de la suppression du projet : ${errorText}`);
+        }
+
+        console.log(`Le projet avec l'ID ${idwork} a été supprimé avec succès.`);
+    } catch (error) {
+        console.error("Erreur lors de la suppression du projet : ", error);
+    }
 }
+
