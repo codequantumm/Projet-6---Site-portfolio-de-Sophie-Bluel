@@ -141,7 +141,8 @@ document.getElementById("ajouter-photo").addEventListener("click", function () {
 
     chargementCategories()
 
-    document.getElementById("add-project-form").addEventListener("submit", async function (event) {
+    const formulaireAjoutImage = document.getElementById("add-project-form");
+    formulaireAjoutImage.addEventListener("submit", async function (event) {
         event.preventDefault();
 
         const imageFile = document.getElementById("image").files[0];
@@ -151,6 +152,13 @@ document.getElementById("ajouter-photo").addEventListener("click", function () {
         await addNewWorks(imageFile, title, category);
 
         modal.style.display = "none";
+
+        formulaireAjoutImage.reset();
+        console.log("Formulaire après réinitialisation : ", {
+            image: document.getElementById("image").files,
+            title: document.getElementById("title").value,
+            category: document.getElementById("category").value
+        });
     });
 });
 
