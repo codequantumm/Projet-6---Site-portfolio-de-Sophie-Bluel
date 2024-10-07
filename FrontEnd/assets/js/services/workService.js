@@ -1,6 +1,9 @@
 async function getAllWorks() {
     return await fetch("http://localhost:5678/api/works").then(response => response.json());
 };
+async function getCategories() {
+    return await fetch("http://localhost:5678/api/categories").then(response => response.json());
+}
 
 async function addNewWorks(imageFile, title, category) {
     const formData = new FormData();
@@ -8,25 +11,29 @@ async function addNewWorks(imageFile, title, category) {
     formData.append('title', title);
     formData.append('category', category);
 
+    const token = recupererToken(); 
+
     return await fetch('http://localhost:5678/api/works', {
         method: 'POST',
         headers: {
             'accept': 'application/json',
-            'Authorization': 'Bearer "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImlhdCI6MTY1MTg3NDkzOSwiZXhwIjoxNjUxOTYxMzM5fQ.JGN1p8YIfR-M-5eQ-Ypy6Ima5cKA4VbfL2xMr2MgHm4"',
-            'Content-Type': 'multipart/form-data'
+            'Authorization': `Bearer ${token}`, 
         },
         body: formData
     })
-        .then(response => response.json())
-        .then(data => console.log(data))
-        .catch(error => console.error(error));
-
+    .then(response => {
+        if (!response.ok) {
+            throw new Error(`Erreur HTTP: ${response.status}`);
+        }
+        return response.json();
+    })
+    .then(data => {
+        console.log(data);
+    })
+    .catch(error => {
+        console.error('Erreur:', error);
+    });
 }
-
-/*function deleteWorks(idwork) {
-    fetch("http://localhost:5678/api/works/" + idwork)
-        .catch(error => console.error(error));
-}*/
 
 async function deleteWorks(idwork) {
     try {
