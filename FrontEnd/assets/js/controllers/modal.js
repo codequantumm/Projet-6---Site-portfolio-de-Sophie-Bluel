@@ -88,32 +88,58 @@ document.getElementById("ajouter-photo").addEventListener("click", function () {
     document.getElementById("titlemodal").style.display = "none";
     this.style.display = "none";
 
-
     const formContainer = document.getElementById("form-container");
     formContainer.innerHTML = '';
 
-
     formContainer.innerHTML = `   
-    <h3>Ajout Photo</h3>
-    <form id="add-project-form" action="#" method="post">
-     <div class="image-upload">
-     <i class="fa-regular fa-image"></i>
-     <input type="file" id="image" name="image" accept="image/*" required>
-            <label for="image" class="upload-label">+ Ajouter photo</label>
-            <p>jpg, png : 4mo max</p>
+<h3>Ajout Photo</h3>
+<form id="add-project-form" action="#" method="post">
+    <div class="image-upload">
+        <i id="icon" class="fa-regular fa-image"></i>
+        <img id="apercu" src="" alt="Aperçu de l'image" style="display:none; width: 100px; height: auto;" />
+        <input type="file" id="image" name="image" accept="image/*" required>
+        <label for="image" class="upload-label">+ Ajouter photo</label>
+        <p>jpg, png : 4mo max</p>
     </div>
-        <label for="title" class="label1">Titre</label>
-        <input type="text" id="title" name="title" required>
-        <label for="category" class="label1">Catégorie</label>
-        <select id="category" name="category" required>
-        </select>
+    <label for="title" class="label1">Titre</label>
+    <input type="text" id="title" name="title" required>
+    <label for="category" class="label1">Catégorie</label>
+    <select id="category" name="category" required></select>
     <hr id="trait">
     <input type="submit" value="Valider">
 </form>
+
     `;
 
-    chargementCategories();
+    function chargementImage(fileInput, apercuImage) {
+        const file = fileInput.files[0];
+        console.log("Fichier sélectionné", file);
+        if (file) {
+            const reader = new FileReader();
 
+            reader.onload = function (e) {
+                apercuImage.src = e.target.result;
+                apercuImage.style.display = "block";
+                const icon = document.getElementById("icon");
+                icon.style.display = "none";
+                const labelUpload = document.querySelector(".upload-label");
+                labelUpload.style.display = "none";
+
+                const imageUploadDiv = document.querySelector('.image-upload');
+                imageUploadDiv.querySelector('p').style.display = "none";
+
+            }
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    document.getElementById("image").addEventListener("change", function (event) {
+        const apercuImage = document.getElementById("apercu");
+        chargementImage(event.target, apercuImage);
+    });
+
+    chargementCategories()
 
     document.getElementById("add-project-form").addEventListener("submit", async function (event) {
         event.preventDefault();
@@ -127,5 +153,37 @@ document.getElementById("ajouter-photo").addEventListener("click", function () {
         modal.style.display = "none";
     });
 });
+
+async function chargementCategories() {
+    try {
+        const categories = await getCategories();
+        const selectElement = document.getElementById("category");
+        selectElement.innerHTML = "";
+
+        categories.forEach(category => {
+            const option = document.createElement("option");
+            option.value = category.id;
+            option.textContent = category.name;
+            selectElement.appendChild(option);
+        });
+
+    } catch (error) {
+        console.error("Erreur lors du chargement des catégories : ", error);
+    }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
