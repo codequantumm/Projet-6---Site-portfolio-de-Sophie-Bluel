@@ -80,7 +80,7 @@ document.getElementById("ajouter-photo").addEventListener("click", function () {
     const modal = document.getElementById("modal1");
 
 
-    modal.style.display = "block";
+    modal.style.display = "flex";
 
 
     document.getElementById("miniatures-container").style.display = "none";
