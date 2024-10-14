@@ -412,14 +412,25 @@ h3 {
 	font-size: 20px;
 	cursor: pointer;
 }
-
-
-a.js-modal {
-	font-size: 15px;
-	color: black;
-	margin-left: 20px;
-	text-decoration: none;
+.header-projets {
+	display: inline-block;
+	text-align: center;
+	width: 100%;
 }
+.header-projets h2, #boutton-modifier {
+    display: inline-block;
+
+}
+#boutton-modifier a {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+}
+
+#boutton-modifier {
+    margin-left: 10px;
+}
+
 
 .modal[aria-hidden="false"] {
 	display: flex;

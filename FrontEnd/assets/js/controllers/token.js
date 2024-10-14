@@ -8,6 +8,6 @@ function recupererToken(){
 
 function supprimerToken(){
     sessionStorage.removeItem("token");
-    console.log("Token récupéré :", token);
-    return token;  
+    console.log("Token supprimé :");
+    
 }
